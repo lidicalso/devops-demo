@@ -1,3 +1,13 @@
+ws-cleanup:0.28
+timestamper:1.7.2
+rebuild:1.25
+parameterized-trigger:2.29
+dropdown-viewstabbar-plugin:1.7
+build-timeout:1.15
+copyartifact:1.37
+jquery:1.11.2-0
+build-pipeline-plugin:1.4.8
+envinject:1.92.1
 credentials:1.21
 git:2.4.0
 git-client:1.19.0
@@ -7,7 +17,7 @@ jobConfigHistory:2.12
 plugin-usage-plugin:0.3
 credentials:1.23
 groovy:1.27
-job-dsl:1.38
+job-dsl:1.40
 github-api:1.69
 github:1.13.3
 plain-credentials:1.1

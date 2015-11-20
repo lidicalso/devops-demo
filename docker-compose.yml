@@ -92,3 +92,30 @@ gitlabdb:
     DB_NAME: gitlabhq_production
   volumes:
     - "/opt/postgreSQL_data:/var/lib/postgresql"
+redminedb:
+  image: sameersbn/postgresql:9.4-8
+  environment:
+    - DB_USER=redmine
+    - DB_PASS=password
+    - DB_NAME=redmine_production
+  volumes:
+    - /opt/docker/redmine/postgresql_data:/var/lib/postgresql
+redmine:
+  image: sameersbn/redmine:3.1.2-1
+  links:
+    - redminedb:postgresql
+  environment:
+    - TZ=Asia/Kolkata
+    - REDMINE_PORT=10083
+    - SMTP_ENABLED=false
+    - SMTP_DOMAIN=www.example.com
+    - SMTP_HOST=smtp.gmail.com
+    - SMTP_PORT=587
+    - SMTP_USER=mailer@example.com
+    - SMTP_PASS=password
+    - SMTP_STARTTLS=true
+    - SMTP_AUTHENTICATION=:login
+  ports:
+    - "10083:80"
+  volumes:
+    - /opt/docker/redmine/data:/home/redmine/data

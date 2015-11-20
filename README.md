@@ -1,3 +1,46 @@
+# DevOps Demo
+
+### Ambiente
+Para ejecutar el entorno correctamente necesitas preparar un ambiente con las características:
+Docker 1.9.1
+Docker-compose 1.5.1
+
+### Preparación
+1) Copia todos los archivos del repositorio al entorno donde instalaste Docker y Docker compose.
+2) Parado sobre la carpeta devops-demo (del repositorio), ejecuta los siguientes comandos
+	Para descargar las imágenes necesarias de DockerHub.
+	```
+	# docker-compose pull
+	```
+
+	Para crear las imagenes necesarias desde sus respectivos docker files.
+	```
+	# docker-compose build
+	```
+3) Para ejecutar los containers de todos los servicios.
+	```
+	# docker-compose up -d
+	```
+
+	Para ver los logs de alguno de los containers en particular ejecutar:
+	```
+	# docker logs -f <container_name>
+	```
+
+## Links a las Tools
+
+| *Tool* | *Link* | *Credentials* |
+| ------------- | ------------- | ------------- |
+| Jenkins | http://${docker-machine ip default}:18080/ | no login required |
+| SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
+| Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |
+| GitLab | http://${docker-machine ip default}:10080/ | root/5iveL!fe |
+| Selenium Grid | http://${docker-machine ip default}:4444/grid/console | no login required |
+
+
+# --------------------------------------------------
+# ---------------- OLD README TEXT -----------------
+# --------------------------------------------------
 # CI Tools Demo
 
 This GitHub repository contains Dockerfiles for running a set of Continuous Integration Tools with a single command.
@@ -48,16 +91,6 @@ git clone git@github.com:marcelbirkner/docker-ci-tool-stack.git
 cd docker-ci-tool-stack
 docker-compose up
 ```
-
-## Access Tools
-
-| *Tool* | *Link* | *Credentials* |
-| ------------- | ------------- | ------------- |
-| Jenkins | http://${docker-machine ip default}:8080/jenkins/ | no login required |
-| SonarQube | http://${docker-machine ip default}:9000/ | admin/admin |
-| Nexus | http://${docker-machine ip default}:8081/nexus | admin/admin123 |
-| GitLab | http://${docker-machine ip default}:10080/ | root/5iveL!fe |
-| Selenium Grid | http://${docker-machine ip default}:4444/grid/console | no login required |
 
 ## Screenshots
 

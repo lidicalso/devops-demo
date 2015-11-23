@@ -37,6 +37,7 @@ Docker-compose 1.5.1
 | GitLab | http://${docker-machine ip default}:10080/ | root/5iveL!fe |
 | Selenium Grid | http://${docker-machine ip default}:4444/grid/console | no login required |
 | Redmine | http://${docker-machine ip default}:10083 | admin/admin |
+| phpLDAPAdmin | https://${docker-machine ip default} | cn=admin,dc=lidicalso,dc=org/lidipassword |
 
 
 # --------------------------------------------------

@@ -104,6 +104,7 @@ redmine:
   build: ./redmine
   links:
     - redminedb:postgresql
+    - ldap:ldap
   environment:
     - TZ=Asia/Kolkata
     - REDMINE_PORT=10083
@@ -119,3 +120,20 @@ redmine:
     - "10083:80"
   volumes:
     - /opt/docker/redmine/data:/home/redmine/data
+ldap:
+  image: osixia/openldap
+  environment:
+    - LDAP_ORGANISATION=LIDICalSo
+    - LDAP_ADMIN_PASSWORD=lidipassword
+    - LDAP_DOMAIN=lidicalso.org
+  volumes:
+    - /opt/docker/ldap/config:/etc/ldap/slapd.d
+    - /opt/docker/ldap/ldap_data:/var/lib/ldap
+ldapui:
+  image: osixia/phpldapadmin
+  ports:
+    - "443:443"
+  links:
+    - ldap:ldap
+  environment:
+    - PHPLDAPADMIN_LDAP_HOSTS=ldap

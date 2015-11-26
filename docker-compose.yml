@@ -101,7 +101,7 @@ redminedb:
   volumes:
     - /opt/docker/redmine/postgresql_data:/var/lib/postgresql
 redmine:
-  image: sameersbn/redmine:3.1.2-1
+  build: ./redmine
   links:
     - redminedb:postgresql
   environment:

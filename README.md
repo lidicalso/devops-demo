@@ -39,6 +39,16 @@ Docker-compose 1.5.1
 | Redmine | http://${docker-machine ip default}:10083 | admin/admin |
 | phpLDAPAdmin | https://${docker-machine ip default} | cn=admin,dc=lidicalso,dc=org/lidipassword |
 
+# 1 LDAP
+
+Una vez que el container de LDAP y LDAPUI estén corriendo, sigue los pasos explicados en el documento "Agregar Usuarios a LDAP.pdf" de la carpeta documentos, para crear los grupos y usuarios necesarios.
+
+# 2 Redmine
+Para configurar Redmine con LDAP, inicia seción con el usario *admin*, y en la sección "Administración -> Autenticación LDAP", haz click en "Nuevo Modo de Autenticación", y agrega los siguientes datos:
+
+![Configuracion LDAP en Redmine](screenshots/redmine-ldap.png)
+
+Luego, crea un nuevo usuario con el mismo userid que en LDAP, y configura el modo de authentiación seleccionando el creado en el paso anterior. De este modo, cuando el password del usuario se actualize en LDAP, este se actualizará por igual en Redmine.
 
 # --------------------------------------------------
 # ---------------- OLD README TEXT -----------------

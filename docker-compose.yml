@@ -36,10 +36,11 @@ nodechrome:
   links:
     - "selhub:hub"
 gitlab:
-  image: "sameersbn/gitlab:7.14.3"
+  image: "sameersbn/gitlab:8.1.4"
   links:
-    - "redis:redisio"
-    - "gitlabdb:postgresql"
+    - redis:redisio
+    - gitlabdb:postgresql
+    - ldap:ldapserver
   ports:
     - "10080:80"
     - "10022:22"
@@ -73,6 +74,15 @@ gitlab:
     - IMAP_PASS=password
     - IMAP_SSL=true
     - IMAP_STARTTLS=false
+    - LDAP_ENABLED=true
+    - LDAP_HOST=ldapserver
+    - LDAP_PORT=389
+    - LDAP_UID=uid
+    - LDAP_BIND_DN=cn=admin,dc=lidicalso,dc=org
+    - LDAP_PASS=lidipassword
+    - LDAP_ACTIVE_DIRECTORY=false
+    - LDAP_BASE=ou=users,dc=lidicalso,dc=org
+    - LDAP_ALLOW_USERNAME_OR_EMAIL_LOGIN=true
   volumes:
     - "/opt/docker/gitlab/gitlab:/home/git/data"
 redis:

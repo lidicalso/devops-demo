@@ -48,6 +48,8 @@ Para configurar Redmine con LDAP, inicia seción con el usario *admin*, y en la 
 
 ![Configuracion LDAP en Redmine](screenshots/redmine-ldap.png)
 
+IMPORTANTE: Asegurate que la opción "On-the-fly user creation" esté seleccionada!
+
 Luego, crea un nuevo usuario con el mismo userid que en LDAP, y configura el modo de authentiación seleccionando el creado en el paso anterior. De este modo, cuando el password del usuario se actualize en LDAP, este se actualizará por igual en Redmine.
 
 # --------------------------------------------------

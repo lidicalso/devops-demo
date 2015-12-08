@@ -148,3 +148,33 @@ ldapui:
     - ldap:ldap
   environment:
     - PHPLDAPADMIN_LDAP_HOSTS=ldap
+reviewboarddb:
+  image: sameersbn/postgresql:9.4-8
+  environment:
+    - DB_USER=reviewboard
+    - DB_PASS=reviewboard
+    - DB_NAME=reviewboard
+  volumes:
+    - /opt/docker/reviewboard/postgresql_data:/var/lib/postgresql
+  ports:
+    - "5432:5432"
+reviewboardcache:
+  image: sylvainlasnier/memcached
+  ports:
+    - "11211:11211"
+reviewboard:
+  image: ikatson/reviewboard
+  environment:
+    - PGPORT=5432
+  ports:
+    - "8000:8000"
+  links:
+    - reviewboarddb:pg
+    - reviewboardcache:memcached
+    - ldap:ldapserver
+    - gitlab:gitlab
+    - redmine:redmine
+  volumes:
+    - /opt/docker/reviewboard/media:/media
+    - /opt/docker/reviewboard/ssh:/.ssh
+
